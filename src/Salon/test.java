@@ -38,6 +38,35 @@ public class test {
 
         }
 
+        String[] menuItems = {"1. Add ny tid","2. View tider","3. Ændre/Slet tider","4. Afslut"};
+        Menu menu = new Menu("MENU",menuItems,"Welcome to the bookingsystem, what would you like to do");
+
+        boolean choice = true;
+        int choice2;
+        while (choice){
+
+            menu.printMenu();
+            choice2 = menu.nextChoice();
+            switch (choice2){
+                case 1:
+                    System.out.println("hey");
+                    break;
+                case 2:
+                    System.out.println("yo");
+                    break;
+                case 3:
+                    System.out.println("ayoo");
+                    break;
+                case 4:
+                    System.out.println("You have quitted");
+                    choice = false;
+                    break;
+                default:
+                    System.out.println("invallidt choice");
+                    break;
+
+            }
+        }
 
 
 
