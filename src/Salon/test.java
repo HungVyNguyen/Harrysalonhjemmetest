@@ -79,11 +79,7 @@ public class test {
         boolean validTime = true;
         timemanega tidListe = new timemanega();
 
-        for (int i = 0; i < tidListe.tider.size() ; i++) {
 
-            tidListe.getTider().get(i);
-
-        }
 
 
 

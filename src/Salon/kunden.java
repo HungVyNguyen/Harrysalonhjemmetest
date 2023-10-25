@@ -12,6 +12,10 @@ public class kunden {
 
     kunden(LocalTime tider,String name, String email, int telefonnummer){
 
+        setTider(tider);
+        setName(name);
+        setEmail(email);
+        setTelefonnummer(telefonnummer);
     }
 
 

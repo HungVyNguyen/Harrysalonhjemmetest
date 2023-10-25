@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 public class timemanega {
 
-    public ArrayList<kunden> tider;
+    private ArrayList<kunden> tider;
 
 
 
@@ -12,8 +12,8 @@ public class timemanega {
         tider = new ArrayList<>(8);
     }
 
-    public void addNewTime(kunden tider){
-        this.tider.add(tider);
+    public void addNewTime(kunden tider1){
+        tider.add(tider1);
     }
 
     public ArrayList<kunden> getTider() {
