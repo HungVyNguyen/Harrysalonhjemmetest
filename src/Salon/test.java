@@ -1,5 +1,6 @@
 package Salon;
 
+import java.time.LocalTime;
 import java.util.Scanner;
 
 public class test {
@@ -71,6 +72,31 @@ public class test {
 
 
 
+    }
+
+    public void createTime(){
+        Scanner scanner = new Scanner(System.in);
+        boolean validTime = true;
+        timemanega tidListe = new timemanega();
+
+        for (int i = 0; i < tidListe.tider.size() ; i++) {
+
+            tidListe.getTider().get(i);
+
+        }
+
+
+
+
+    }
+
+
+
+    public void reader(){
+
+    }
+    public void sender(){
+        //ser om den skal bruges
     }
 
 

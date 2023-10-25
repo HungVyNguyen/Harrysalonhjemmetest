@@ -3,12 +3,13 @@ package Salon;
 import java.util.ArrayList;
 
 public class timemanega {
-    private ArrayList<kunden> tider;
+
+    public ArrayList<kunden> tider;
 
 
 
     timemanega(){
-        tider = new ArrayList<>(18);
+        tider = new ArrayList<>(8);
     }
 
     public void addNewTime(kunden tider){
@@ -22,6 +23,7 @@ public class timemanega {
     public void setTider(ArrayList<kunden> tider) {
         this.tider = tider;
     }
+
 
 
 
