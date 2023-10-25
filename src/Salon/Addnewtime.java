@@ -1,10 +1,9 @@
 package Salon;
 
-import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.Scanner;
 
-public class test1 {
+public class Addnewtime {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
         boolean validTime = true;
@@ -31,15 +30,15 @@ public class test1 {
 
 
         System.out.println("Hvad tid vil du have en person?");
-        int tider = scanner.nextInt();
-
+        int tider = 0;
         while (validTime){
+            tider = scanner.nextInt();
             if (tider >= 10 && tider <= 18) {
                 tider = tider - 10;
-                validTime =false;
+                validTime = false;
             } else {
                 System.out.println("denne tid er ikke i kalænderen");
-                scanner.nextInt();
+                tider = scanner.nextInt();
             }
         }
 
