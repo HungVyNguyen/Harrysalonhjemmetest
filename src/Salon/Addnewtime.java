@@ -41,9 +41,9 @@ public class Addnewtime {
                 tider = scanner.nextInt();
             }
         }
-
-
         tidListe.getTider().get(tider).setName("HungVy");
+
+
         System.out.println("-..............- ");
         for (int i = 0; i < tidListe.getTider().size(); i++) {
             System.out.println(tidListe.getTider().get(i));
