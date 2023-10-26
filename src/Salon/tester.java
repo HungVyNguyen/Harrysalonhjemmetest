@@ -3,7 +3,7 @@ package Salon;
 import java.time.LocalTime;
 import java.util.Scanner;
 
-public class Addnewtime {
+public class tester {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
         boolean validTime = true;
@@ -31,8 +31,9 @@ public class Addnewtime {
 
         System.out.println("Hvad tid vil du have en person?");
         int tider = 0;
+        tider = scanner.nextInt();
         while (validTime){
-            tider = scanner.nextInt();
+
             if (tider >= 10 && tider <= 18) {
                 tider = tider - 10;
                 validTime = false;
@@ -41,13 +42,22 @@ public class Addnewtime {
                 tider = scanner.nextInt();
             }
         }
-        tidListe.getTider().get(tider).setName("HungVy");
-
+        scanner.nextLine();//scannerbug
+        System.out.println("\nHvad hedder personen?");
+        String navn = scanner.nextLine();
+        tidListe.getTider().get(tider).setName(navn);
+        System.out.println("\nHvad er emailen på personen?");
+        String email = scanner.nextLine();
+        tidListe.getTider().get(tider).setEmail(email);
+        System.out.println("\nHvad er telefonnummer på personen? (vi er i danmark så der behøves ikke +45)");
+        int telefonNummer = scanner.nextInt();
+        tidListe.getTider().get(tider).setTelefonnummer(telefonNummer);
 
         System.out.println("-..............- ");
         for (int i = 0; i < tidListe.getTider().size(); i++) {
             System.out.println(tidListe.getTider().get(i));
         }
+
 
 
 

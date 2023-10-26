@@ -55,11 +55,10 @@ public class kunden {
 
     @Override
     public String toString() {
-        return "kunden{" +
+        return
                 "tider=" + tider +
                 ", name='" + name + '\'' +
                 ", email='" + email + '\'' +
-                ", telefonnummer=" + telefonnummer +
-                '}';
+                ", telefonnummer=" + telefonnummer;
     }
 }

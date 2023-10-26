@@ -1,17 +1,31 @@
 package Salon;
 
+import java.io.*;
+import java.time.LocalDate;
 import java.time.LocalTime;
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class test {
 
 
+    private ArrayList<String> tider;
 
+
+
+    test(){
+        tider = new ArrayList<>();
+    }
     public static void main(String[] args) {
         new test().run();
     }
 
     private void run() {
+
+
+
+
+        /*
         Scanner scanner = new Scanner(System.in);
         boolean isharry = true;
         frisør harryskonto = new frisør("123","123");
@@ -70,29 +84,141 @@ public class test {
         }
 
 
-
+*/
+        sender();
+        reader();
+        reader();
+        reader();
 
     }
 
     public void createTime(){
+
+    }
+
+
+
+    public void changeTime(){
         Scanner scanner = new Scanner(System.in);
         boolean validTime = true;
-        timemanega tidListe = new timemanega();
+        System.out.println("Hvad tid vil du have en person?");
+        int tider2 = 0;
+        tider2 = scanner.nextInt();
+        while (validTime){
+
+            if (tider2 >= 10 && tider2 <= 18) {
+                tider2 = tider2 - 10;
+                validTime = false;
+            } else {
+                System.out.println("denne tid er ikke i kalænderen");
+                tider2 = scanner.nextInt();
+            }
+        }
+        scanner.nextLine();//scannerbug
+        System.out.println("\nHvad hedder personen?");
+        String navn = scanner.nextLine();
+       // tider.get(tider2).setName(navn);
+        System.out.println("\nHvad er emailen på personen?");
+        String email = scanner.nextLine();
+        //tider.get(tider2).setEmail(email);
+        System.out.println("\nHvad er telefonnummer på personen? (vi er i danmark så der behøves ikke +45)");
+        int telefonNummer = scanner.nextInt();
+        //tider.get(tider2).setTelefonnummer(telefonNummer);
+
+        System.out.println("-..............- ");
+        for (int i = 0; i < tider.size(); i++) {
+            System.out.println(tider.get(i));
+        }
+    }
+    public void reader() {
+        Scanner scanner = new Scanner(System.in);
+        ArrayList<String> strings = new ArrayList<>();
+        System.out.println("Intast dato i format. år-måned-dag");
+        String fileName = scanner.nextLine();
+        String value;
+
+        try {
+            BufferedReader bufferedReader = new BufferedReader(new FileReader(fileName+".txt"));
+
+            while ((value = bufferedReader.readLine()) != null) {
+                strings.add(value);
+            }
+            int tid = scanner.nextInt();
+
+            String[] dele = strings.get(tid).split(", ");
+
+            for (int i = 0; i < dele.length; i++) {
+                if (dele[i].startsWith("name=")) {
+                    dele[i] = "name= 'Hassan'";
+                }
+            }
+            for (int i = 0; i < dele.length; i++) {
+                if (dele[i].startsWith("email=")) {
+                    dele[i] = "email= 'Alpha.com'";
+                }
+            }
+            for (int i = 0; i < dele.length; i++) {
+                if (dele[i].startsWith("telefonnummer")) {
+                    dele[i] = "telefonnummer= 234234234";
+                }
+            }
+
+            String updatedLineHassan = String.join(", ", dele);
+
+            strings.set(tid, updatedLineHassan);
+            // Save the changes back to the file
+            try (BufferedWriter writer = new BufferedWriter(new FileWriter(fileName+".txt"))) {
+                for (int i = 0; i <strings.size() ; i++) {
+                    writer.write(strings.get(i));
+                    writer.newLine();
+                }
 
 
+            }
 
+            for (int i = 0; i < strings.size(); i++) {
+                System.out.println(strings.get(i));
+                tider.add(strings.get(i) + "");
+            }
 
-
-
+        } catch (FileNotFoundException e) {
+            throw new RuntimeException(e);
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
     }
 
 
-
-    public void reader(){
-
-    }
     public void sender(){
-        //ser om den skal bruges
+        try {
+                int year = 2023;
+                int month = 2;
+                int day = 1;
+                LocalDate dato = LocalDate.of(year,month,day);
+                String dato2 = dato.toString();
+                PrintStream outFile = new PrintStream(new File(dato2+".txt"));
+
+                for (int j = 0; j < 9; j++) {
+                        int hour = 10;
+                        int min = 0;
+                        LocalTime tid = LocalTime.of((hour)+j,min);
+                        String name = null;
+                        String email= null;
+                        int telefon = 0;
+
+
+                        kunden kunden1 = new kunden(tid,name,email,telefon);
+
+                        tider.add(kunden1+"");
+                       outFile.println(tider.get(tider.size() - 1));
+                }
+
+        } catch (FileNotFoundException e) {
+            System.out.println("File not found");
+        }
+
+
+
     }
 
 

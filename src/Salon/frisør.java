@@ -5,10 +5,6 @@ public class frisør {
     private String username;
     private String password;
 
-
-
-
-
     frisør(String username,String password){
         setPassword(password);
         setUsername(username);
