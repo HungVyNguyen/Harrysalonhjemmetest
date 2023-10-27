@@ -87,8 +87,6 @@ public class test {
 */
         sender();
         reader();
-        reader();
-        reader();
 
     }
 
@@ -133,16 +131,25 @@ public class test {
     public void reader() {
         Scanner scanner = new Scanner(System.in);
         ArrayList<String> strings = new ArrayList<>();
-        System.out.println("Intast dato i format. år-måned-dag");
-        String fileName = scanner.nextLine();
+        System.out.println("Skriv dagen du har lyst til at ændre tiden");
+        System.out.println("år?");
+        int year = scanner.nextInt();
+        System.out.println("måned");
+        int month = scanner.nextInt();
+        System.out.println("dag?");
+        int day = scanner.nextInt();
+        LocalDate dato = LocalDate.of(year, month, day);
+        String dato2 = dato.toString();
         String value;
 
         try {
-            BufferedReader bufferedReader = new BufferedReader(new FileReader(fileName+".txt"));
+            BufferedReader bufferedReader = new BufferedReader(new FileReader(dato2+".txt"));
+
 
             while ((value = bufferedReader.readLine()) != null) {
                 strings.add(value);
             }
+            System.out.println("angiv en tid du vil ændre");
             int tid = scanner.nextInt();
 
             String[] dele = strings.get(tid).split(", ");
@@ -167,7 +174,7 @@ public class test {
 
             strings.set(tid, updatedLineHassan);
             // Save the changes back to the file
-            try (BufferedWriter writer = new BufferedWriter(new FileWriter(fileName+".txt"))) {
+            try (BufferedWriter writer = new BufferedWriter(new FileWriter(dato2+".txt"))) {
                 for (int i = 0; i <strings.size() ; i++) {
                     writer.write(strings.get(i));
                     writer.newLine();
@@ -190,33 +197,49 @@ public class test {
 
 
     public void sender(){
+
+        Scanner scanner = new Scanner(System.in);
+
         try {
-                int year = 2023;
-                int month = 2;
-                int day = 1;
-                LocalDate dato = LocalDate.of(year,month,day);
-                String dato2 = dato.toString();
-                PrintStream outFile = new PrintStream(new File(dato2+".txt"));
+            System.out.println("Opret en dag");
+            System.out.println("år?");
+            int year = scanner.nextInt();
+            System.out.println("måned");
+            int month = scanner.nextInt();
+            System.out.println("dag?");
+            int day = scanner.nextInt();
+            LocalDate dato = LocalDate.of(year, month, day);
+            String dato2 = dato.toString();
+            File file = new File(dato2 + ".txt");
+            // Tjek om filen allerede eksisterer
+            // Eneste problem ved den er hvis en fil hedder datoen og ikke har noget virker den ikke rigtig
+            // Man kan prøve at lave en READER der reader filen og derefter lave en if statement hvor hvis der er noget som helts i filen eller ej skal den lave denne filen/override, blev træt :(
+            if (file.exists()) {
+                System.out.println("Filen eksisterer allerede.");
+            } else {
+                PrintStream outFile = new PrintStream(file);
 
                 for (int j = 0; j < 9; j++) {
-                        int hour = 10;
-                        int min = 0;
-                        LocalTime tid = LocalTime.of((hour)+j,min);
-                        String name = null;
-                        String email= null;
-                        int telefon = 0;
+                    int hour = 10;
+                    int min = 0;
+                    LocalTime tid = LocalTime.of((hour) + j, min);
+                    String name = null;
+                    String email = null;
+                    int telefon = 0;
 
+                    kunden kunden1 = new kunden(tid, name, email, telefon);
 
-                        kunden kunden1 = new kunden(tid,name,email,telefon);
-
-                        tider.add(kunden1+"");
-                       outFile.println(tider.get(tider.size() - 1));
+                    tider.add(kunden1 + "");
+                    outFile.println(tider.get(tider.size() - 1));
                 }
 
-        } catch (FileNotFoundException e) {
-            System.out.println("File not found");
-        }
 
+                System.out.println("Filen er oprettet og data er skrevet.");
+            }
+
+        } catch (FileNotFoundException e) {
+            System.out.println("Fejl: Filen kunne ikke oprettes.");
+        }
 
 
     }

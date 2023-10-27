@@ -1,7 +1,7 @@
 tider=10:00, name='null', email='null', telefonnummer=0
 tider=11:00, name='null', email='null', telefonnummer=0
 tider=12:00, name='null', email='null', telefonnummer=0
-tider=13:00, name='null', email='null', telefonnummer=0
+tider=13:00, name= 'Hassan', email= 'Alpha.com', telefonnummer= 234234234
 tider=14:00, name='null', email='null', telefonnummer=0
 tider=15:00, name='null', email='null', telefonnummer=0
 tider=16:00, name='null', email='null', telefonnummer=0
